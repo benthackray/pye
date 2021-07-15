@@ -15,7 +15,7 @@ Pie.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    continent_name: {
+    category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
