@@ -1,0 +1,24 @@
+{
+  "name": "pye",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benthackray/pye.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benthackray/pye/issues"
+  },
+  "homepage": "https://github.com/benthackray/pye#readme",
+  "dependencies": {
+    "eslint": "^7.30.0"
+  }
+}
