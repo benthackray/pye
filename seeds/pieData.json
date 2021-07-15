@@ -1,0 +1,30 @@
+[
+    {
+        "name": "What is the best flavor of ice cream?",
+        "category": "food",
+        "labels": ["vanilla", "chocolate", "strawberry"],
+        "data": [2,2,1],
+        "user_id": 1
+    },
+    {
+        "name": "What is the best movie genre?",
+        "category": "entertainment",
+        "labels": ["comedy", "horror", "romance", "action"],
+        "data": [2,1,1,1],
+        "user_id": 2
+    },
+    {
+        "name": "Where should I go on vacation?",
+        "category": "random",
+        "labels": ["the beach", "the mountains"],
+        "data": [3,2],
+        "user_id": 3
+    },
+    {
+        "name": "Does pineapple belong on pizza?",
+        "category": "food",
+        "labels": ["yes", "no"],
+        "data": [1,4],
+        "user_id": 5
+    }
+]
