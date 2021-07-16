@@ -7,4 +7,8 @@ module.exports = {
       new Date(date).getFullYear() + 5
     }`;
   },
+  toObj: (data) => {
+    console.log(JSON.parse(data));
+    return JSON.parse(data);
+  },
 };

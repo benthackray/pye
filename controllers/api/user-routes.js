@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Pie, Vote } = require('../../models');
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 // Update user
 router.put('/username', async (req, res) => {
   try {
-    const dbUserData = await User.create({
+    const dbUserData = await User.update({
       username: req.body.username,
     },{
       where: {id: req.session.userId}
