@@ -35,10 +35,11 @@ User.init(
       validate: {
         len: [8],
       },
+    },
     profile_img: {
         type: DataTypes.STRING,
-    }
-    },
+        allowNull:false
+      }
   },
   {
     hooks: {
