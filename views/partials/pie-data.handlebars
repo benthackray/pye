@@ -1,0 +1,53 @@
+<p>{{id}}) {{name}}</p>
+
+<a href="/pie/{{id}}">
+    <div style="width: 200px; height: 200px;">
+        <canvas id="myChart{{id}}"></canvas>
+    </div>
+</a>
+
+<script>
+    // === include 'setup' then 'config' above ===
+
+    let lab{{id}} = "{{labels}}"
+    let dat{{id}} = "{{data}}"
+
+    console.log(lab{{id}}.replace(/&quot;/g,'"'));
+
+    lab{{id}} = lab{{id}}.replace(/&quot;/g,'"');
+    dat{{id}} = dat{{id}}.replace(/&quot;/g,'"');
+
+    const data{{id}} = {
+        labels: JSON.parse(lab{{id}}),
+        datasets: [{
+            label: 'My First Dataset',
+            data: JSON.parse(dat{{id}}),
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+            ],
+            radius: "100%",
+        }]
+    };
+
+    const config{{id}} = {
+        type: 'pie',
+        data: data{{id}},
+        options: {
+            plugins: {
+                legend: {
+                    display: true
+                },
+                tooltip: {
+                    enabled: false
+                }
+            }
+        }
+    };
+
+    var myChart{{id}} = new Chart(
+        document.getElementById('myChart' + {{id}}),
+        config{{id}}
+    );
+</script>

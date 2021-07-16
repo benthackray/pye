@@ -1,0 +1,18 @@
+.radio-toolbar input[type="radio"] {
+    display: none;
+  }
+  
+  .radio-toolbar label {
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .radio-toolbar input[type="radio"]:checked+label {
+    border-color: red;
+    border-style: solid;
+  }
+
+  .radio-toolbar img{
+    width: 50px;
+    height: 50px;
+  }
