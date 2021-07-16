@@ -29,6 +29,7 @@ router.get('/', withAuth ,async (req, res) => {
 router.get('/test', async (req, res) => {
   try {
     const pieData = await Pie.findAll({
+      limit: 3,
       include: [
           {
               model: User
@@ -40,8 +41,6 @@ router.get('/test', async (req, res) => {
       pie.get({ plain: true })
   );
 
-  console.log(pies)
-
   res.render('test', {pies});
   } catch (err) {
     console.log(err);
@@ -50,7 +49,7 @@ router.get('/test', async (req, res) => {
 });
 
 // GET for starting menu
-router.get('/menu', (req, res) => {
+router.get('/menu', async (req, res) => {
   try {
     res.render('menu', {layout: false});
   } catch (err) {
@@ -60,9 +59,20 @@ router.get('/menu', (req, res) => {
 });
 
 // GET for a particular pie
-router.get('/pie/:id', (req, res) => {
+router.get('/pie/:id', async (req, res) => {
   try {
-    res.render('menu', {layout: false});
+    const pieData = await Pie.findByPk(req.params.id,{
+        include: [
+            {
+                model: User
+            }
+        ],
+    });
+
+    const data = pieData.map((pie) =>
+        pie.get({ plain: true })
+    );
+    res.render('pie', {data, loggedIn: req.session.loggedIn});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
