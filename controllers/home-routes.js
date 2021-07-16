@@ -13,17 +13,27 @@ router.get('/', withAuth ,async (req, res) => {
   }
 });
 
-// GET for homepage
-router.get('/login', (req, res) => {
+// GET for starting menu
+router.get('/menu', (req, res) => {
   try {
-    res.render('login');
+    res.render('menu', {layout: false});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET for login
+// GET for signup
+router.get('/login', (req, res) => {
+  try {
+    res.render('signup');
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// GET for signup
 router.get('/signup', (req, res) => {
   try {
     res.render('signup');
