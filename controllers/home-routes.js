@@ -26,7 +26,7 @@ router.get('/menu', (req, res) => {
 // GET for signup
 router.get('/login', (req, res) => {
   try {
-    res.render('signup');
+    res.render('login', {layout: false});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -36,7 +36,7 @@ router.get('/login', (req, res) => {
 // GET for signup
 router.get('/signup', (req, res) => {
   try {
-    res.render('signup');
+    res.render('signup', {layout: false});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
