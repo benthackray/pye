@@ -68,10 +68,10 @@ router.get('/pie/:id', async (req, res) => {
             }
         ],
     });
-
-    const data = pieData.map((pie) =>
-        pie.get({ plain: true })
-    );
+    const data = pieData.get({ plain: true });
+    data.labels = JSON.parse(data.labels);
+    data.data = JSON.parse(data.data);
+    console.log(data);
     res.render('pie', {data, loggedIn: req.session.loggedIn});
   } catch (err) {
     console.log(err);
