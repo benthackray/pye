@@ -8,7 +8,7 @@
   }
   
   .radio-toolbar input[type="radio"]:checked+label {
-    border-color: red;
+    border-color: grey;
     border-style: solid;
   }
 

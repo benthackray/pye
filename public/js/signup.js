@@ -5,11 +5,21 @@ const signupFormHandler = async (event) => {
     const email = document.querySelector('#email').value.trim();
     const password = document.querySelector('#password').value.trim();
     const confirmPassword = document.querySelector('#confirm-password').value.trim();
+    const avatars = document.querySelectorAll(".radios");
+    let profile_img = "";
+
+    avatars.forEach((el)=>{
+        if(el.checked){
+            profile_img = el.value;
+        }
+    })
   
-    if (username && email && password && password === confirmPassword) {
-      const response = await fetch('/api/users/', {
+    console.log(profile_img);
+
+    if (password === confirmPassword && username && email && password && profile_img) {
+      const response = await fetch('/api/user/', {
         method: 'POST',
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ username, email, password, profile_img }),
         headers: { 'Content-Type': 'application/json' },
       });
   
