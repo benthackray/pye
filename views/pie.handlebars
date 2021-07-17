@@ -24,7 +24,6 @@ This is the view for an individual pie chart.
                 'rgb(255, 99, 132)',
                 'rgb(54, 162, 235)',
                 'rgb(255, 205, 86)',
-                
             ],
             hoverOffset: 30,
             radius: "80%"
@@ -34,7 +33,18 @@ This is the view for an individual pie chart.
     const config = {
         type: 'pie',
         data,
-        options: {}
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                    color: "white",
+                    font: {
+                        size: 16
+                    }
+                    }
+                }
+            }
+        }
     };
 
     var myChart = new Chart(
