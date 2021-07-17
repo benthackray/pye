@@ -1,1 +1,56 @@
-Private Stuff
+This is the view for an individual pie chart.
+
+
+<div style="width: 400px; height: 400px; padding: 50px;">
+    <canvas id="myChart">{{data.id}}</canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div id="vote-group" data-pie={{data.id}}>
+{{#each data.labels}}
+    <button value="{{@index}}">{{@index}}: {{this}} </button>
+{{/each}}
+</div>
+
+<script>
+    // === include 'setup' then 'config' above ===
+    const data = {
+        labels: [{{#each data.labels}} "{{this}}", {{/each}}],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [{{#each data.data}} {{this}}, {{/each}}],
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+            ],
+            hoverOffset: 30,
+            radius: "80%"
+        }]
+    };
+
+    const config = {
+        type: 'pie',
+        data,
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                    color: "white",
+                    font: {
+                        size: 16
+                    }
+                    }
+                }
+            }
+        }
+    };
+
+    var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+</script>
+
+<script src="/js/pie.js"></script>
