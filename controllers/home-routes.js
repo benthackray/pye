@@ -29,7 +29,7 @@ router.get('/', withAuth ,async (req, res) => {
 router.get('/test', async (req, res) => {
   try {
     const pieData = await Pie.findAll({
-      limit: 3,
+      limit: 6,
       include: [
           {
               model: User
@@ -71,7 +71,6 @@ router.get('/pie/:id', async (req, res) => {
     const data = pieData.get({ plain: true });
     data.labels = JSON.parse(data.labels);
     data.data = JSON.parse(data.data);
-    console.log(data);
     res.render('pie', {data, loggedIn: req.session.loggedIn});
   } catch (err) {
     console.log(err);

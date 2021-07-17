@@ -2,16 +2,16 @@ This is the view for an individual pie chart.
 
 
 <div style="width: 400px; height: 400px; padding: 50px;">
-    <canvas id="myChart"></canvas>
+    <canvas id="myChart">{{data.id}}</canvas>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<div id="vote-group" data-pie={{data.id}}>
 {{#each data.labels}}
-<a>
     <button value="{{@index}}">{{@index}}: {{this}} </button>
-</a>
 {{/each}}
+</div>
 
 <script>
     // === include 'setup' then 'config' above ===
@@ -26,9 +26,8 @@ This is the view for an individual pie chart.
                 'rgb(255, 205, 86)',
                 
             ],
-            hoverOffset: 50,
-            radius: "80%",
-            clip: 600
+            hoverOffset: 30,
+            radius: "80%"
         }]
     };
 

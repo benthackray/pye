@@ -1,25 +1,27 @@
-const loginFormHandler = async (event) => {
+const voteHandler = async (event) => {
     event.preventDefault();
-
-    const name = document.querySelector('#name-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
-
-    if (name && password) {
-        const response = await fetch('/api/users/login', {
+    el = event.target;
+    if(el.tagName === "BUTTON"){
+        pie_id = document.querySelector('#vote-group').dataset.pie;
+        //update vote api
+        const response = await fetch('/api/vote', {
             method: 'POST',
-            body: JSON.stringify({ name, password }),
+            body: JSON.stringify({ 
+                choice: el.value,
+                pie_id
+            }),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (response.ok) {
-            document.location.replace('/');
+            location.reload();
         } else {
-            alert('Failed to log in.');
+            alert('Vote failed.');
         }
     }
 };
 
 document
-    .querySelector('.login-form')
-    .addEventListener('submit', loginFormHandler);
+    .querySelector('#vote-group')
+    .addEventListener('click', voteHandler);
   
