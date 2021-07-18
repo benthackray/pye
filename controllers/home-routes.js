@@ -119,7 +119,11 @@ router.get('/pie/:id', async (req, res) => {
     const pieData = await Pie.findByPk(req.params.id,{
         include: [
             {
-                model: User
+              model: User
+            },
+            {
+              model: Vote,
+              include: [{model: User}]
             }
         ],
     });
@@ -164,9 +168,21 @@ router.get('/create', (req, res) => {
 });
 
 // GET for profile page to change and view profile options
-router.get('/profile', (req, res) => {
+router.get('/profile', async (req, res) => {
   try {
-    res.render('profile');
+    let userData = await User.findByPk(req.session.userId,{
+      include: [
+          {
+              model: Pie
+          },
+      ],
+  });
+
+  userData = userData.get({ plain: true });
+
+  console.log(userData);
+
+  res.render('profile', {userData, loggedIn: req.session.loggedIn});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

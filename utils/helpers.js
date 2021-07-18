@@ -7,6 +7,13 @@ module.exports = {
       new Date(date).getFullYear() + 5
     }`;
   },
+  format_choice: (Labels, Choice) => {
+    return Labels[Choice];
+  },
+  reverse_array: (Input) => {
+    console.log("here");
+    return Input.reverse();
+  },
   toObj: (data) => {
     console.log(JSON.parse(data));
     return JSON.parse(data);
