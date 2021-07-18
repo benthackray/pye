@@ -87,3 +87,46 @@ img {
     width: 50px;
     height: 50px;
   }
+
+  .sign-in-form h4,
+  .signup-form h4 {
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .sign-in-form label,
+  .signup-form label {
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .sign-in-form input,
+  .signup-form input {
+    color: rgb(0, 0, 0);
+  }
+  
+  .sign-in-form input:focus,
+  .signup-form input:focus {
+    opacity: .8;
+  }
+  
+  .sign-in-form-username,
+  .sign-in-form-password,
+  .email,
+  .username,
+  .password,
+  .confirm-password{
+    border-radius: 30px;
+    border: none;
+    opacity: .1;
+    transition: all ease .4s;
+  }
+  
+  
+  
+  
