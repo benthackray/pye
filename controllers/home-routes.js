@@ -2,11 +2,13 @@ const router = require('express').Router();
 const { User, Pie, Vote } = require('../models');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
+const sequelize = require('../config/connection');
 
 // GET for homepage
 router.get('/', withAuth ,async (req, res) => {
   try {
     const pieData = await Pie.findAll({
+      limit: 6,
       include: [
           {
               model: User
@@ -25,8 +27,7 @@ router.get('/', withAuth ,async (req, res) => {
   }
 });
 
-//TODO: Remove
-router.get('/test', async (req, res) => {
+router.get('/both/:name/:category', withAuth ,async (req, res) => {
   try {
     const pieData = await Pie.findAll({
       limit: 6,
@@ -35,13 +36,67 @@ router.get('/test', async (req, res) => {
               model: User
           }
       ],
+      where: {
+        name: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + req.params.name.toLocaleUpperCase() + '%'),
+        category: req.params.category
+      }
   });
 
   const pies = pieData.map((pie) =>
       pie.get({ plain: true })
   );
 
-  res.render('test', {pies});
+  res.render('homepage', {pies, loggedIn: req.session.loggedIn});
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/name/:name', withAuth ,async (req, res) => {
+  try {
+    const pieData = await Pie.findAll({
+      limit: 6,
+      include: [
+          {
+              model: User
+          }
+      ],
+      where: {
+        name: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + req.params.name.toLocaleUpperCase() + '%'),
+      }
+  });
+
+  const pies = pieData.map((pie) =>
+      pie.get({ plain: true })
+  );
+
+  res.render('homepage', {pies, loggedIn: req.session.loggedIn});
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/category/:category', withAuth ,async (req, res) => {
+  try {
+    const pieData = await Pie.findAll({
+      limit: 6,
+      include: [
+          {
+              model: User
+          }
+      ],
+      where: {
+        category: req.params.category
+      }
+  });
+
+  const pies = pieData.map((pie) =>
+      pie.get({ plain: true })
+  );
+
+  res.render('homepage', {pies, loggedIn: req.session.loggedIn});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -78,7 +133,7 @@ router.get('/pie/:id', async (req, res) => {
   }
 });
 
-// GET for signup
+// GET for login
 router.get('/login', (req, res) => {
   try {
     res.render('login', {layout: false});
