@@ -2,8 +2,10 @@
     <h1>this is where the profile will go</h1>
 </div>
 
-{{!-- <div class="container d-flex flex-column justify-content-center">
-    {{#each posts as |post|}}
+<div id="user-pies" class="container d-flex flex-column justify-content-center">
+    {{#each userData.pies as |pie|}}
     {{> user-pie}}
     {{/each}}
-</div> --}}
+</div>
+
+<script src="/js/profile.js"></script>
