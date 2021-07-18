@@ -1,6 +1,9 @@
-<p>This is a test page to be removed<p>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    {{#each pies as |pie|}}
-    {{> pie-data}}
-    {{/each}}
+<div class="container mt-5">
+    <p>SearchBar</p>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+        {{#each pies as |pie|}}
+        {{> pie-data}}
+        {{/each}}
+    </div>
+</div>
