@@ -19,36 +19,18 @@ router.post('/', async (req, res) => {
     }
 }); 
 
-// //update
-// router.put('/', async (req, res) => {
-//     try {
-//         const postData = await Post.update({
-//             title: req.body.title,
-//             content: req.body.content,
-//             user_id: req.session.userId
-//         },{
-//             where: {id: req.body.post_id}
-//         });
+//delete
+router.delete('/', async (req, res) => {
+    try {
+        const pieData = await Pie.destroy({
+            where: {id: req.body.post_id}
+        });
 
-//         res.status(200).json(postData);
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
-
-// //delete
-// router.delete('/', async (req, res) => {
-//     try {
-//         const postData = await Post.destroy({
-//             where: {id: req.body.post_id}
-//         });
-
-//         res.status(200).json(postData);
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
+        res.status(200).json(pieData);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;

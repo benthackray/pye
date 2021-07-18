@@ -1,16 +1,25 @@
-This is the view for an individual pie chart.
+<div class="container d-flex flex-column align-items-center justify-content-center">
+
+    <div style="width: 400px; height: 400px; padding: 50px;">
+        <canvas id="myChart">{{data.id}}</canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div id="vote-group" class="mb-4" data-pie={{data.id}}>
+        {{#each data.labels}}
+        <button value="{{@index}}">{{@index}}: {{this}} </button>
+        {{/each}}
+    </div>
 
 
-<div style="width: 400px; height: 400px; padding: 50px;">
-    <canvas id="myChart">{{data.id}}</canvas>
-</div>
+    <ul class="list-group">
+        {{#each (reverse_array data.votes) as |vote|}}
+        <li class="list-group-item"><img src="{{user.profile_img}}" style="width: 50px; height: 50px;" />
+            {{user.username}}: {{format_choice ../data.labels choice_new}}</li>
+        {{/each}}
+    </ul>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<div id="vote-group" data-pie={{data.id}}>
-{{#each data.labels}}
-    <button value="{{@index}}">{{@index}}: {{this}} </button>
-{{/each}}
 </div>
 
 <script>
