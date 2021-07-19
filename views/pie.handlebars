@@ -8,14 +8,14 @@
 
     <div id="vote-group" class="mb-4" data-pie={{data.id}}>
         {{#each data.labels}}
-        <button value="{{@index}}"> {{this}} </button>
+        <button class="button button-rounded-hover" value="{{@index}}"> {{this}} </button>
         {{/each}}
     </div>
 
 
     <ul class="list-group">
         {{#each (reverse_array data.votes) as |vote|}}
-        <li class="list-group-item"><img src="{{user.profile_img}}" style="width: 50px; height: 50px;" />
+        <li class="list-group-item"><img src="{{user.profile_img}}" class="" style="width: 50px; height: 50px;" />
             {{user.username}}: {{format_choice ../data.labels choice_new}}</li>
         {{/each}}
     </ul>
@@ -24,8 +24,16 @@
 
 <script>
     // === include 'setup' then 'config' above ===
+    tempArray = [{{#each data.labels}} `{{format_string this}}`, {{/each}}]
+
+    tempArray = tempArray.map((el) => {
+        newString = el.replace(/&quot;/g,`"`);
+        newString = newString.replace(/&#x27;/g,`'`);
+        return newString;
+    });
+
     const data = {
-        labels: [{{#each data.labels}} "{{this}}", {{/each}}],
+        labels: tempArray,
         datasets: [{
             label: 'My First Dataset',
             data: [{{#each data.data}} {{this}}, {{/each}}],

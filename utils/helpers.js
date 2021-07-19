@@ -10,6 +10,11 @@ module.exports = {
   format_choice: (Labels, Choice) => {
     return Labels[Choice];
   },
+  format_string: (inputString) => {
+    newString = inputString.replace(/&quot;/g,`"`);
+    newString = newString.replace(/&#x27;/g,`'`);
+    return newString;
+  },
   reverse_array: (Input) => {
     console.log("here");
     return Input.reverse();
