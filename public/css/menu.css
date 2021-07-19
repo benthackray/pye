@@ -89,7 +89,8 @@ img {
   }
 
   .sign-in-form h4,
-  .signup-form h4 {
+  .signup-form h4,
+  .create-form h4 {
     color: white;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -112,7 +113,7 @@ img {
   
   .sign-in-form input:focus,
   .signup-form input:focus {
-    opacity: 1;
+    opacity: .5;
   }
   
   .sign-in-form-username,
@@ -120,13 +121,19 @@ img {
   .email,
   .username,
   .password,
-  .confirm-password{
+  .confirm-password,
+  .options,
+  .name,
+  .new-username,
+  .new-password,
+  .confirm-new-password,
+  .icon-url {
     border-radius: 30px;
     border: none;
-    opacity: .3;
+    opacity: .5;
     transition: all ease .4s;
+    
   }
   
-  
-  
+ 
   
