@@ -13,8 +13,6 @@ const usernameFormHandler = async (event) => {
         if (response.ok) {
             alert('Successfully updated Username!');
             document.location.reload();
-        } else {
-            alert('Failed to update username');
         }
     }
 };
