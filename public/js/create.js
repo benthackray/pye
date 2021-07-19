@@ -29,7 +29,10 @@ const createFormHandler = async (event) => {
       });
   
       if (response.ok) {
+        alert('Successfully created Pie!');
         document.location.replace('/profile');
+      } else {
+        alert('Failed to create pie');
       }
     }
   };
