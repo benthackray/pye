@@ -9,7 +9,7 @@ const sequelize = require('../config/connection');
 router.get('/', withAuth ,async (req, res) => {
   try {
     const pieData = await Pie.findAll({
-      limit: 6,
+      limit: 12,
       include: [
           {
               model: User
@@ -31,7 +31,7 @@ router.get('/', withAuth ,async (req, res) => {
 router.get('/both/:name/:category', withAuth ,async (req, res) => {
   try {
     const pieData = await Pie.findAll({
-      limit: 6,
+      limit: 12,
       include: [
           {
               model: User
@@ -57,7 +57,7 @@ router.get('/both/:name/:category', withAuth ,async (req, res) => {
 router.get('/name/:name', withAuth ,async (req, res) => {
   try {
     const pieData = await Pie.findAll({
-      limit: 6,
+      limit: 12,
       include: [
           {
               model: User
@@ -82,7 +82,7 @@ router.get('/name/:name', withAuth ,async (req, res) => {
 router.get('/category/:category', withAuth ,async (req, res) => {
   try {
     const pieData = await Pie.findAll({
-      limit: 6,
+      limit: 12,
       include: [
           {
               model: User
