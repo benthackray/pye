@@ -89,7 +89,8 @@ img {
   }
 
   .sign-in-form h4,
-  .signup-form h4 {
+  .signup-form h4,
+  .create-form h4 {
     color: white;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -120,13 +121,14 @@ img {
   .email,
   .username,
   .password,
-  .confirm-password{
+  .confirm-password,
+  .options,
+  .name {
     border-radius: 30px;
     border: none;
     opacity: .1;
     transition: all ease .4s;
   }
   
-  
-  
+ 
   
