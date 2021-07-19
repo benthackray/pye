@@ -18,11 +18,6 @@ const seedAll = async () => {
     returning: true,
   });
 
-  // await Vote.bulkCreate(voteData, {
-  //   individualHooks: true,
-  //   returning: true,
-  // });
-
   process.exit(0);
 };
 

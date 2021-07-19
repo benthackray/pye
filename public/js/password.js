@@ -21,8 +21,6 @@ const passwordFormHandler = async (event) => {
         if (response.ok) {
             alert('Successfully updated password!');
             document.location.reload();
-        } else {
-            alert('Failed to update password');
         }
     }
 };
