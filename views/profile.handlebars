@@ -1,62 +1,67 @@
 
 <div class="row row-cols-1 row-cols-md-2 mt-4">
-    <div>
-        <center>
-            <br>
-            <h1>Profile settings</h1>
-
-            <h4>Change Username</h4> <br>
-            <form class="username-form mb-4">
-                <div class="mb-3">
-                    <label for="new-username">New Username</label>
-                    <input type="text" class="new-username" id="new-username"> <br>
-                </div>
-                <button type="submit" class="button button-rounded-hover">
-                    Submit
-                </button>
-            </form>
-
-            <h4>Change Password</h4> <br>
-            <form class="password-form mb-4">
-                <div class="mb-3">
-                    <label for="new-password">New Password</label>
-                    <input type="text" class="new-password" id="new-password"> <br>
-                    <label for="confirm-new-password">Confirm New Password</label>
-                    <input type="text" class="confirm-new-password" id="confirm-new-password"> <br>
-                </div>
-                <button type="submit" class="button button-rounded-hover">Submit</button>
-            </form>
-
-            <h4>Custom Icon</h4>
-            <form class="icon-form mb-4">
+    <center>
+        <br>
+        <h1>Profile settings</h1>
+        <br>
+        <h4>Change Username</h4> 
+        <br>
+        <form class="username-form">
+        <div>
+            <label for="new-username">New Username</label>
+            <input type="text" class="new-username" id="new-username"> <br>
+        <br>
+            <button type="submit" class="button button-rounded-hover">Submit</button>
+        </form>
+        </div>
+        <br>
+        <h4>Change Password</h4> 
+        <br>
+        <form class="password-form">
+        <div>
+            <label for="new-password">New Password</label>
+            <input type="text" class="new-password" id="new-password"> 
+        <br>
+        <br>
+            <label for="confirm-new-password">Confirm New Password</label>
+            <input type="text" class="confirm-new-password" id="confirm-new-password"> 
+        <br>
+        <br>
+            <button type="submit" class="button button-rounded-hover">Submit</button>
+        </form>
+        </div>
+        <br>
+        <h4>Custom Icon</h4>
+        <form class="icon-form">
                 <label for="icon-url">Enter a Custom Icon URL</label>
-                <input type="text" class="icon-url mb-3" id="icon-url"> <br>
-
+                <input type="text" class="icon-url" id="icon-url"> <br>
+        <br>
                 <button type="submit" class="button button-rounded-hover">Submit</button>
 
             </form>
 
-        </center>
+    </center>
 
-    </div>
+</div>
 
     <center>
-    
+
         <div>
             <br />
             <h1>{{data.username}}'s Pies</h1>
             <br />
-            <div id="user-pies" class="container w-75 d-flex flex-column justify-content-center">
-                {{#each data.pies as |pie|}}
-                {{> user-pie}}
-                {{/each}}
-            </div>
-        </div>
-    
-    </center>
-    </div>
+            {{#each data.pies}}
+            <a href="/pie/{{id}}">
+                <p>{{name}}</p>
+            </a>
 
-<script src="/js/profile.js"></script>
+            {{/each}}
+
+        </div>
+
+    </center>
+</div>
+
 <script src="/js/username.js"></script>
 <script src="/js/password.js"></script>
 <script src="/js/icon.js"></script>

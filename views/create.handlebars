@@ -1,12 +1,19 @@
-<div class="vh-100 d-flex align-items-center justify-content-center">
+<br>
+<br>
+<br>
+<br>
 
-    <form class="form create-form">
-        <h2>Create a new Pie</h2><br />
-        <label for="name">What would you like to ask?</label><br />
-        <input type="text" id="name" name="name" required /><br /><br />
-
-        <label for="category">Choose a category:</label>
-        <select id="category" name="category">
+<form>
+  <div class="create-form">
+    <h4 class="text-center">Create a New Pie</h4>
+    <center>
+    <label for="name">What would you like to ask?</label>
+    <br>
+    <input type="text" class="name" id="name">
+    <br>
+    <br>
+    <label for="category">Choose a category:</label>
+        <select id="category" class="category">
             <option value="Food">Food</option>
             <option value="Movies">Movies</option>
             <option value="TV">TV</option>
@@ -14,23 +21,29 @@
             <option value="Sports">Sports</option>
             <option value="Tech">Tech</option>
             <option value="Random">Random</option>
-        </select><br /><br />
-
-
-        <label for="options">Options (up to 6):</label><br />
-        <input type="text" id="option1" class="options" required /><br />
-        <input type="text" id="option2" class="options" required /><br />
-        <input type="text" id="option3" class="options" /><br />
-        <input type="text" id="option4" class="options" /><br />
-        <input type="text" id="option5" class="options" /><br />
-        <input type="text" id="option6" class="options" /><br />
-        <br />
-
-        <button type="submit" class="button button-rounded-hover">
+        </select>
+    <br>
+    <br>
+    <label for="options">Options (choose up to 6):</label>
+        <br><input type="text" id="option1" class="options" required />
+        <br>
+        <br><input type="text" id="option2" class="options" required />
+        <br>
+        <br><input type="text" id="option3" class="options" />
+        <br>
+        <br><input type="text" id="option4" class="options" />
+        <br>
+        <br><input type="text" id="option5" class="options" />
+        <br>
+        <br><input type="text" id="option6" class="options" />
+    </form>
+    <br>
+    <br>
+    <button type="submit" class="button button-rounded-hover">
             Submit
         </button>
-    </form>
+    
 
-    <script src="./js/create.js"></script>
+ <script src="./js/create.js"></script>
 
 </div>
