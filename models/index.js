@@ -21,12 +21,12 @@ Vote.belongsTo(User, {
 });
 
 Pie.hasMany(Vote, {
-  foreignKey: 'user_id',
+  foreignKey: 'pie_id',
   onDelete: 'CASCADE'
 });
 
 Vote.belongsTo(Pie, {
-  foreignKey: 'user_id'
+  foreignKey: 'pie_id'
 });
 
 module.exports = { User, Pie, Vote };

@@ -121,7 +121,11 @@ router.get('/pie/:id', async (req, res) => {
     const pieData = await Pie.findByPk(req.params.id,{
         include: [
             {
-                model: User
+              model: User
+            },
+            {
+              model: Vote,
+              include: [{model: User}]
             }
         ],
     });
