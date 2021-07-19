@@ -1,5 +1,13 @@
 const router = require('express').Router();
 const { User, Pie, Vote } = require('../../models');
+var cloudinary = require('cloudinary').v2;
+
+// set CLOUDINARY configuration
+cloudinary.config({
+  cloud_name: 'dx1djlhrd',
+  api_key: '179755825786356',
+  api_secret: 'mug5Y5TviNHcPjIox_kEdmfYTsk'
+});
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -91,5 +99,28 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+// Update profile image
+router.put('/image', async (req, res) => {
+  try {
+    
+    
+    
+    const dbUserData = await User.update({
+      username: req.body.new_image,
+    },{
+      where: {id: req.session.userId}
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
