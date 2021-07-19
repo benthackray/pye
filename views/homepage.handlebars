@@ -1,3 +1,26 @@
-<div>
-    <h1> this is where pies will go</h1>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div class="container mt-5">
+    <form id="search_bar" class="mx-auto pb-3 w-75">
+        <div class="input-group">
+            <input id="search_input" type="text" class="form-control w-50" placeholder="search...">
+            <select class="form-select" id="category">
+                <option selected value="none">Categories</option>
+                <option value="Food">Food</option>
+                <option value="Movies">Movies</option>
+                <option value="TV">TV</option>
+                <option value="Music">Music</option>
+                <option value="Sports">Sports</option>
+                <option value="Tech">Tech</option>
+                <option value="Random">Random</option>
+            </select>
+        </div>
+    </form>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-4">
+        {{#each pies as |pie|}}
+        {{> pie-data}}
+        {{/each}}
+    </div>
+
+    <script src="/js/homepage.js"></script>
 </div>
