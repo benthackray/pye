@@ -1,6 +1,6 @@
-const User = require('./User');
-const Pie = require('./Pie');
-const Vote = require('./Vote');
+const User = require('./user');
+const Pie = require('./pie');
+const Vote = require('./vote');
 
 User.hasMany(Pie, {
   foreignKey: 'user_id',
