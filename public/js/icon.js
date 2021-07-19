@@ -14,7 +14,7 @@ const iconFormHandler = async (event) => {
             alert('Successfully updated Icon!');
             document.location.reload();
         } else {
-            alert('Failed to update icon');
+            alert('Failed to update icon, invalid image Url?');
         }
     }
 };
