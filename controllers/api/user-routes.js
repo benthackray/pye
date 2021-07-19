@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Pie, Vote } = require('../../models');
 
+
 // CREATE new user
 router.post('/', async (req, res) => {
   try {
@@ -22,7 +23,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update user
+// Update username
 router.put('/username', async (req, res) => {
   try {
     const dbUserData = await User.update({
@@ -40,6 +41,49 @@ router.put('/username', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// Update icon
+router.put('/icon', async (req, res) => {
+  try {
+    const dbUserData = await User.update({
+      profile_img: req.body.profile_img,
+    },{
+      where: {id: req.session.userId}
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+const bcrypt = require('bcrypt');
+
+// Update password
+router.put('/password', async (req, res) => {
+
+  try {
+    const dbUserData = await User.update({
+      password: req.body.password,
+    },{
+      where: {id: req.session.userId},
+      individualHooks: true
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 // Login
 router.post('/login', async (req, res) => {

@@ -13,8 +13,6 @@ const signupFormHandler = async (event) => {
             profile_img = el.value;
         }
     })
-  
-    console.log(profile_img);
 
     if (password === confirmPassword && username && email && password && profile_img) {
       const response = await fetch('/api/user/', {

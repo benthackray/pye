@@ -3,6 +3,8 @@ const { User, Pie, Vote } = require('../models');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
 const sequelize = require('../config/connection');
+const bcrypt = require('bcrypt');
+
 
 // GET for homepage
 router.get('/', withAuth ,async (req, res) => {
@@ -164,13 +166,27 @@ router.get('/create', (req, res) => {
 });
 
 // GET for profile page to change and view profile options
-router.get('/profile', (req, res) => {
+router.get('/profile', async (req, res) => {
   try {
-    res.render('profile');
+    console.log(req.session.userId);
+    const userData = await User.findByPk(req.session.userId,{
+        include: [
+            {
+                model: Pie
+            }
+        ],
+    });
+    const data = userData.get({ plain: true });
+    res.render('profile', {data, loggedIn: req.session.loggedIn});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+// Change Password page
+
+
+
 
 module.exports = router;
