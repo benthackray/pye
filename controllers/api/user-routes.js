@@ -1,5 +1,13 @@
 const router = require('express').Router();
 const { User, Pie, Vote } = require('../../models');
+var cloudinary = require('cloudinary').v2;
+
+// set CLOUDINARY configuration
+cloudinary.config({
+  cloud_name: 'dx1djlhrd',
+  api_key: '179755825786356',
+  api_secret: 'mug5Y5TviNHcPjIox_kEdmfYTsk'
+});
 
 
 // CREATE new user
@@ -45,21 +53,27 @@ router.put('/username', async (req, res) => {
 
 // Update icon
 router.put('/icon', async (req, res) => {
-  try {
-    const dbUserData = await User.update({
-      profile_img: req.body.profile_img,
-    },{
-      where: {id: req.session.userId}
-    });
-
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      res.status(200).json(dbUserData);
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+  cloudinary.uploader.upload( req.body.profile_img,
+  { "tags": "basic_sample", "width": 400, "height": 400, "crop": "fit"},
+  async function (err, image) {
+    console.log();
+    console.log("** Remote Url");
+    if (err){ 
+      res.status(400).json({message: "Not a valid url."});
+    }else{
+      try {
+        const dbUserData = await User.update({
+          profile_img: image.url,
+        },{
+          where: {id: req.session.userId}
+        });
+        res.status(200).json(dbUserData);
+      } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+      }
+    }
+  });
 });
 
 const bcrypt = require('bcrypt');
@@ -135,5 +149,7 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+
 
 module.exports = router;

@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
 router.delete('/', async (req, res) => {
     try {
         const pieData = await Pie.destroy({
-            where: {id: req.body.post_id}
+            where: {id: req.body.pie_id}
         });
 
         res.status(200).json(pieData);
