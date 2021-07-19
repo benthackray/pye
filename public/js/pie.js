@@ -1,6 +1,6 @@
 const voteHandler = async (event) => {
     event.preventDefault();
-    el = event.target;
+    let el = event.target;
     if(el.tagName === "BUTTON"){
         pie_id = document.querySelector('#vote-group').dataset.pie;
         //update vote api

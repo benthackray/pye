@@ -113,7 +113,7 @@ img {
   
   .sign-in-form input:focus,
   .signup-form input:focus {
-    opacity: 1;
+    opacity: .5;
   }
   
   .sign-in-form-username,
@@ -123,11 +123,16 @@ img {
   .password,
   .confirm-password,
   .options,
-  .name {
+  .name,
+  .new-username,
+  .new-password,
+  .confirm-new-password,
+  .icon-url {
     border-radius: 30px;
     border: none;
-    opacity: .3;
+    opacity: .5;
     transition: all ease .4s;
+    
   }
   
  
