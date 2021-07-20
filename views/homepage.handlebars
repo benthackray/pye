@@ -17,7 +17,7 @@
     </form>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-4">
-        {{#each pies as |pie|}}
+        {{#each (reverse_array pies) as |pie|}}
         {{> pie-data}}
         {{/each}}
     </div>
