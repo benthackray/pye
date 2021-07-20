@@ -31,8 +31,9 @@ img {
 
   .button{
     background-color: #ffffff;
+    min-width: 120px;
   }
-  
+
   .button-rounded-hover:before {
     opacity: 0;
     content: "";
