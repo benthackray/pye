@@ -28,6 +28,10 @@ img {
     -webkit-transform: translateZ(0);
             transform: translateZ(0);
   }
+
+  .button{
+    background-color: #ffffff;
+  }
   
   .button-rounded-hover:before {
     opacity: 0;
